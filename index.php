@@ -39,9 +39,9 @@ class="text-red-500 border-b-2 border-red-500 pb-1">
 Beranda
 </a>
 
-<a href="formulir.html"
+<a href="Galeri.html"
 class="hover:text-red-500">
-Formulir
+Galeri
 </a>
 
 <a href="#tentang"
