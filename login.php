@@ -1,5 +1,15 @@
 <?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 include "koneksi.php";
+
+// 🔥 AMBIL COOKIE UNTUK AUTO ISI USERNAME
+$username_cookie = "";
+
+if (isset($_COOKIE['remember']) && $_COOKIE['remember'] == "1") {
+    $username_cookie = $_COOKIE['username'];
+}
 
 if (isset($_POST['login'])) {
 
@@ -21,6 +31,11 @@ if (isset($_POST['login'])) {
         if (isset($_POST['remember'])) {
             setcookie("username", $user['username'], time() + (86400 * 7), "/");
             setcookie("role", $user['role'], time() + (86400 * 7), "/");
+            setcookie("remember", "1", time() + (86400 * 7), "/");
+        } else {
+            setcookie("username", "", time() - 3600, "/");
+            setcookie("role", "", time() - 3600, "/");
+            setcookie("remember", "", time() - 3600, "/");
         }
 
         // redirect
@@ -62,7 +77,9 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
 
 <form method="POST">
 
+<!-- 🔥 USERNAME AUTO FILL -->
 <input type="text" name="username"
+value="<?= $username_cookie ?>"
 placeholder="Username"
 class="w-full p-3 border rounded-lg mb-3 focus:outline-red-400" required>
 
