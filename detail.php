@@ -120,28 +120,45 @@ Pesan Sekarang
 </div>
 
 <!-- FOOTER -->
-<footer class="bg-gray-900 text-gray-300 pt-10 pb-6 mt-10">
-<div class="max-w-6xl mx-auto px-6 grid md:grid-cols-3 gap-8">
+  <footer class="bg-gray-900 text-gray-300 pt-10 pb-6">
 
-<div>
-<h2 class="text-white font-bold">Teras Mobil 99</h2>
-<p>Platform jual beli mobil terpercaya</p>
-</div>
+  <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-3 gap-8">
 
-<div>
-<h2 class="text-white font-bold">Menu</h2>
-<a href="index.php">Beranda</a><br>
-<a href="galeri.php">Galeri</a>
-</div>
+  <!-- Tentang -->
+  <div>
+  <h2 class="text-xl font-bold text-white mb-3">Teras Mobil 99</h2>
+  <p class="text-sm leading-relaxed">
+  Teras Mobil 99 adalah platform jual beli mobil terpercaya yang
+  menyediakan berbagai pilihan mobil berkualitas dengan harga terbaik
+  serta proses pembelian yang mudah dan aman.
+  </p>
+  </div>
 
-<div>
-<h2 class="text-white font-bold">Kontak</h2>
-<p>08123456789</p>
-</div>
+  <!-- Navigasi -->
+  <div>
+  <h2 class="text-xl font-bold text-white mb-3">Navigasi</h2>
+  <ul class="space-y-2 text-sm">
+  <li><a href="index.php" class="hover:text-white">Beranda</a></li>
+  <li><a href="galeri.php" class="hover:text-white">Galeri</a></li>
+  <li><a href="tentang.php" class="hover:text-white">Tentang Kami</a></li>
+  </ul>
+  </div>
 
-</div>
-</footer>
+  <!-- Kontak -->
+  <div>
+  <h2 class="text-xl font-bold text-white mb-3">Kontak Kami</h2>
+  <p class="text-sm">📍 Jl. Raya Mobil No.99, Surabaya</p>
+  <p class="text-sm mt-1">📞 0812-3456-7890</p>
+  <p class="text-sm mt-1">✉ info@terasmobil99.com</p>
+  </div>
 
+  </div>
+
+  <div class="border-t border-gray-700 mt-8 pt-4 text-center text-sm">
+  <p>© 2026 Teras Mobil 99. All Rights Reserved.</p>
+  </div>
+
+  </footer>
 <!-- JS BOOTSTRAP -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 
