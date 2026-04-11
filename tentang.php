@@ -50,6 +50,12 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
         <span class="text-gray-700"><?= $_SESSION['username'] ?></span>
         <a href="logout.php" class="text-red-500 hover:text-red-700">Logout</a>
       <?php endif; ?>
+      <!-- MENU -->
+      <div id="nav-menu" class="hidden md:flex flex-col mt-2 md:flex-row md:mt-0 md:space-x-6 font-medium w-full md:w-auto">
+        <a href="index.php" class="text-gray-700 hover:text-red-500 py-1 md:py-0">Beranda</a>
+        <a href="galeri.php" class="text-gray-700 hover:text-red-500 py-1 md:py-0">Galeri</a>
+        <a href="tentang.php" class="text-red-500 border-b-2 border-red-500 pb-1">Tentang</a>
+      </div>
 
     </div>
 

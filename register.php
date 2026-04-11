@@ -6,8 +6,8 @@ if (isset($_POST['register'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    mysqli_query($conn, "INSERT INTO users 
-    VALUES ('','$username','$password','user')");
+    mysqli_query($conn, "INSERT INTO users (username, password, role)
+    VALUES ('$username','$password','user')");
 
     echo "<script>alert('Registrasi berhasil! Silakan login');window.location='login.php';</script>";
 }
