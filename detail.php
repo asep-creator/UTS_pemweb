@@ -12,7 +12,11 @@ $m = mysqli_fetch_assoc($data);
 <meta charset="UTF-8">
 <title>Detail Mobil</title>
 
+<!-- Tailwind -->
 <script src="https://cdn.tailwindcss.com"></script>
+
+<!-- Bootstrap (UNTUK SLIDER) -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
 </head>
 
@@ -49,15 +53,48 @@ $m = mysqli_fetch_assoc($data);
 <!-- DETAIL -->
 <div class="max-w-4xl mx-auto mt-10 bg-white p-6 rounded shadow">
 
-<!-- 🔙 Tombol Kembali -->
-<a href="galeri.php" 
-class="inline-block mb-4 text-blue-500 hover:underline">
+<!-- Tombol Kembali -->
+<a href="galeri.php" class="inline-block mb-4 text-blue-500 hover:underline">
 ← Kembali ke Galeri
 </a>
 
-<img src="admin/upload/<?= $m['gambar'] ?>" 
-class="w-full h-80 object-cover rounded">
+<!-- SLIDER GAMBAR -->
+<?php
+$nama = pathinfo($m['gambar'], PATHINFO_FILENAME);
+?>
 
+<div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+
+    <?php
+    for ($i = 0; $i <= 5; $i++) {
+        $file = ($i == 0) ? $nama . ".jpg" : $nama . $i . ".jpg";
+        $path = "admin/upload/" . $file;
+
+        if (file_exists($path)) {
+    ?>
+        <div class="carousel-item <?php echo ($i == 0) ? 'active' : ''; ?>">
+            <img src="<?php echo $path; ?>" class="w-full h-80 object-cover rounded">
+        </div>
+    <?php
+        }
+    }
+    ?>
+
+  </div>
+
+  <!-- tombol kiri -->
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+    <span class="text-3xl text-black">‹</span>
+  </button>
+
+  <!-- tombol kanan -->
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+    <span class="text-3xl text-black">›</span>
+  </button>
+</div>
+
+<!-- DATA MOBIL -->
 <h2 class="text-2xl font-bold mt-4"><?= $m['nama'] ?></h2>
 
 <p class="mt-2 text-gray-600">Tipe: <?= $m['tipe'] ?></p>
@@ -104,6 +141,9 @@ Pesan Sekarang
 
 </div>
 </footer>
+
+<!-- JS BOOTSTRAP -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>
