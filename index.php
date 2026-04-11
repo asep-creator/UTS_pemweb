@@ -1,4 +1,7 @@
-<?php include "koneksi.php"; ?>
+<?php 
+include "koneksi.php"; 
+?>
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -34,7 +37,7 @@ Beranda
 </a>
 
 <a href="galeri.php" class="hover:text-red-500">Galeri</a>
-<a href="#tentang" class="hover:text-red-500">Tentang</a>
+<a href="tentang.php" class="hover:text-red-500">Tentang</a>
 
 <?php if (!isset($_SESSION['login'])): ?>
 <a href="login.php" class="bg-blue-500 text-white px-4 py-2 rounded">
@@ -53,7 +56,7 @@ Masuk
 <!-- HERO -->
 <section class="relative min-h-[500px] flex items-end md:items-center">
 
-<img src="assets/mobil.jpg"
+<img src="assets/mobil1.jpg"
 class="absolute inset-0 w-full h-full object-cover">
 
 <div class="absolute inset-0 bg-black/50"></div>
@@ -83,24 +86,24 @@ Lihat Mobil →
 <div class="max-w-6xl mx-auto px-6 text-center">
 
 <h3 class="text-3xl font-bold mb-10">
-Kenapa Memilih Teras Mobil 99
+Kenapa Memilih Teras Mobil 99?
 </h3>
 
 <div class="grid md:grid-cols-3 gap-8">
 
 <div class="p-6 bg-red-100 rounded-lg">
 <h4 class="font-bold">Mobil Berkualitas</h4>
-<p>Sudah dicek kualitasnya</p>
+<p>Dijamin berkualitas! Semua mobil telah dicek secara detail untuk memastikan performa dan kenyamanan.</p>
 </div>
 
 <div class="p-6 bg-red-100 rounded-lg">
 <h4 class="font-bold">Harga Terbaik</h4>
-<p>Harga transparan</p>
+<p>Harga bersaing dengan transparansi penuh, tanpa biaya tersembunyi.</p>
 </div>
 
 <div class="p-6 bg-red-100 rounded-lg">
 <h4 class="font-bold">Proses Mudah</h4>
-<p>Online dan cepat</p>
+<p>Beli mobil jadi lebih mudah! Proses cepat, praktis, dan bisa dilakukan dari mana saja.</p>
 </div>
 
 </div>
