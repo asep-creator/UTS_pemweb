@@ -1,4 +1,6 @@
-<?php include "koneksi.php"; ?>
+<?php
+include "koneksi.php";
+?>
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -9,93 +11,93 @@
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
 </head>
 
 <body class="bg-gray-100">
 
 <!-- NAVBAR -->
-<nav class="bg-white shadow">
+<nav class="bg-white shadow border-b">
+  <div class="max-w-6xl mx-auto flex justify-between items-center py-2 px-5">
 
-<div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+    <!-- LOGO -->
+    <div class="flex items-center">
+      <img src="assets/logo.png" alt="logo" class="h-20">
+      <h1 class="ml-3 flex font-bold">
+        <span class="text-black text-3xl self-center">Teras</span>
+        <span class="text-red-500 text-2xl self-center ml-1">Mobil 99</span>
+      </h1>
+    </div>
 
-<!-- Logo -->
-<div class="flex items-center space-x-2">
+    <!-- MENU DESKTOP -->
+    <div class="hidden md:flex space-x-6 items-center font-medium">
 
-<img src="assets/logo.png" class="w-14 md:w-20 bg-white p-1 rounded">
+      <a href="index.php"
+      class="<?= basename($_SERVER['PHP_SELF'])=='index.php' ? 'text-red-500 border-b-2 border-red-500 pb-1' : 'text-gray-700 hover:text-red-500' ?>">
+      Beranda
+      </a>
 
-<h1 class="ml-3 flex font-bold">
-<span class="text-black text-xl md:text-3xl self-center">Teras</span>
-<span class="text-red-500 text-lg md:text-2xl self-center ml-1">Mobil 99</span>
-</h1>
+      <a href="galeri.php"
+      class="<?= basename($_SERVER['PHP_SELF'])=='galeri.php' ? 'text-red-500 border-b-2 border-red-500 pb-1' : 'text-gray-700 hover:text-red-500' ?>">
+      Galeri
+      </a>
 
-</div>
+      <a href="tentang.php"
+      class="<?= basename($_SERVER['PHP_SELF'])=='tentang.php' ? 'text-red-500 border-b-2 border-red-500 pb-1' : 'text-gray-700 hover:text-red-500' ?>">
+      Tentang
+      </a>
 
-<!-- Menu Desktop -->
-<div class="hidden md:flex space-x-6 text-gray-700 font-medium items-center">
+      <?php if (isset($_SESSION['role']) && $_SESSION['role']=='admin'): ?>
+      <a href="admin/dashboard.php"
+      class="<?= strpos($_SERVER['PHP_SELF'], 'dashboard.php') !== false ? 'text-red-500 border-b-2 border-red-500 pb-1' : 'text-gray-700 hover:text-red-500' ?>">
+      Dashboard
+      </a>
+      <?php endif; ?>
 
-<a href="index.php"
-class="<?= basename($_SERVER['PHP_SELF'])=='index.php' ? 'text-red-500 border-b-2 border-red-500 pb-1' : 'hover:text-red-500' ?>">
-Beranda
-</a>
+      <?php if (!isset($_SESSION['login'])): ?>
+      <a href="login.php" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+        Masuk
+      </a>
+      <?php else: ?>
+      <span class="text-gray-700"><?= $_SESSION['username'] ?></span>
+      <a href="logout.php" class="text-red-500 hover:text-red-700">Logout</a>
+      <?php endif; ?>
 
-<a href="galeri.php"
-class="<?= basename($_SERVER['PHP_SELF'])=='galeri.php' ? 'text-red-500 border-b-2 border-red-500 pb-1' : 'hover:text-red-500' ?>">
-Galeri
-</a>
+    </div>
 
-<a href="#tentang"
-class="hover:text-red-500">
-Tentang
-</a>
+    <!-- HAMBURGER -->
+    <button id="menu-btn" class="md:hidden text-2xl text-gray-700">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+  </div>
 
-<!-- DASHBOARD KHUSUS ADMIN -->
-<?php if (isset($_SESSION['role']) && $_SESSION['role']=='admin'): ?>
-<a href="admin/dashboard.php"
-class="<?= strpos($_SERVER['PHP_SELF'], 'dashboard.php') ? 'text-red-500 border-b-2 border-red-500 pb-1' : 'hover:text-red-500' ?>">
-Dashboard
-</a>
-<?php endif; ?>
+  <!-- MOBILE MENU -->
+  <div id="mobile-menu" class="hidden md:hidden px-6 pb-4 space-y-3 text-gray-700 font-medium">
+    <a href="index.php"
+    class="<?= basename($_SERVER['PHP_SELF'])=='index.php' ? 'text-red-500 border-b-2 border-red-500 pb-1 block' : 'hover:text-red-500 block' ?>">
+    Beranda
+    </a>
 
-<!-- LOGIN / LOGOUT -->
-<?php if (!isset($_SESSION['login'])): ?>
-<a href="login.php"
-class="bg-blue-500 text-white px-4 py-2 rounded">
-Masuk
-</a>
-<?php else: ?>
-<span><?= $_SESSION['username'] ?></span>
-<a href="logout.php" class="text-red-500">Logout</a>
-<?php endif; ?>
+    <a href="galeri.php"
+    class="<?= basename($_SERVER['PHP_SELF'])=='galeri.php' ? 'text-red-500 border-b-2 border-red-500 pb-1 block' : 'hover:text-red-500 block' ?>">
+    Galeri
+    </a>
 
-</div>
+    <a href="tentang.php"
+    class="<?= basename($_SERVER['PHP_SELF'])=='tentang.php' ? 'text-red-500 border-b-2 border-red-500 pb-1 block' : 'hover:text-red-500 block' ?>">
+    Tentang
+    </a>
 
-<!-- Hamburger Button -->
-<button id="menu-btn" class="md:hidden text-2xl text-gray-700">
-<i class="fa-solid fa-bars"></i>
-</button>
+    <?php if (isset($_SESSION['role']) && $_SESSION['role']=='admin'): ?>
+    <a href="admin/dashboard.php" class="block hover:text-red-500">Dashboard</a>
+    <?php endif; ?>
 
-</div>
-
-<!-- Mobile Menu -->
-<div id="mobile-menu"
-class="hidden md:hidden px-6 pb-4 space-y-3 text-gray-700 font-medium">
-
-<a href="index.php">Beranda</a>
-<a href="galeri.php">Galeri</a>
-<a href="#tentang">Tentang</a>
-
-<?php if (isset($_SESSION['role']) && $_SESSION['role']=='admin'): ?>
-<a href="admin/dashboard.php">Dashboard</a>
-<?php endif; ?>
-
-<?php if (!isset($_SESSION['login'])): ?>
-<a href="login.php">Masuk</a>
-<?php else: ?>
-<a href="logout.php">Logout</a>
-<?php endif; ?>
-
-</div>
+    <?php if (!isset($_SESSION['login'])): ?>
+    <a href="login.php" class="block hover:text-red-500">Masuk</a>
+    <?php else: ?>
+    <a href="logout.php" class="block text-red-500">Logout</a>
+    <?php endif; ?>
+  </div>
+</nav>
 
 </nav>
 <!-- FILTER -->
@@ -147,27 +149,45 @@ window.onload = loadData;
 </script>
 
 <!-- FOOTER -->
-<footer class="bg-gray-900 text-gray-300 pt-10 pb-6 mt-10">
-<div class="max-w-6xl mx-auto px-6 grid md:grid-cols-3 gap-8">
+  <footer class="bg-gray-900 text-gray-300 pt-10 pb-6">
 
-<div>
-<h2 class="text-white font-bold">Teras Mobil 99</h2>
-<p>Platform jual beli mobil terpercaya</p>
-</div>
+  <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-3 gap-8">
 
-<div>
-<h2 class="text-white font-bold">Menu</h2>
-<a href="index.php">Beranda</a><br>
-<a href="galeri.php">Galeri</a>
-</div>
+  <!-- Tentang -->
+  <div>
+  <h2 class="text-xl font-bold text-white mb-3">Teras Mobil 99</h2>
+  <p class="text-sm leading-relaxed">
+  Teras Mobil 99 adalah platform jual beli mobil terpercaya yang
+  menyediakan berbagai pilihan mobil berkualitas dengan harga terbaik
+  serta proses pembelian yang mudah dan aman.
+  </p>
+  </div>
 
-<div>
-<h2 class="text-white font-bold">Kontak</h2>
-<p>08123456789</p>
-</div>
+  <!-- Navigasi -->
+  <div>
+  <h2 class="text-xl font-bold text-white mb-3">Navigasi</h2>
+  <ul class="space-y-2 text-sm">
+  <li><a href="index.php" class="hover:text-white">Beranda</a></li>
+  <li><a href="galeri.php" class="hover:text-white">Galeri</a></li>
+  <li><a href="tentang.php" class="hover:text-white">Tentang Kami</a></li>
+  </ul>
+  </div>
 
-</div>
-</footer>
+  <!-- Kontak -->
+  <div>
+  <h2 class="text-xl font-bold text-white mb-3">Kontak Kami</h2>
+  <p class="text-sm">📍 Jl. Raya Mobil No.99, Surabaya</p>
+  <p class="text-sm mt-1">📞 0812-3456-7890</p>
+  <p class="text-sm mt-1">✉ info@terasmobil99.com</p>
+  </div>
+
+  </div>
+
+  <div class="border-t border-gray-700 mt-8 pt-4 text-center text-sm">
+  <p>© 2026 Teras Mobil 99. All Rights Reserved.</p>
+  </div>
+
+  </footer>
 
 </body>
 </html>
