@@ -1,42 +1,60 @@
-
+<?php
+include "koneksi.php";
+?>
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tentang Kami - Teras Mobil 99</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tentang Kami - Teras Mobil 99</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 </head>
 
-<body class="bg-gradient-to-br from-red-100 via-white to-red-400 min-h-screen">
+<body class="bg-gray-100">
 
-  <!-- NAVBAR -->
-  <nav class="bg-white shadow border-b">
-    <div class="max-w-6xl mx-auto flex justify-between items-center py-2 px-5">
+<!-- NAVBAR -->
+<nav class="bg-white shadow border-b">
+  <div class="max-w-6xl mx-auto flex justify-between items-center py-2 px-5">
 
-      <!-- LOGO + NAMA -->
-      <div class="flex items-center">
-        <img src="assets/logo.png" alt="logo" class="h-20">
-        <h1 class="ml-3 flex font-bold">
-          <span class="text-black text-3xl self-center">Teras</span>
-          <span class="text-red-500 text-2xl self-center ml-1">Mobil 99</span>
-        </h1>
-      </div>
+    <div class="flex items-center">
+      <img src="assets/logo.png" alt="logo" class="h-20">
+      <h1 class="ml-3 flex font-bold">
+        <span class="text-black text-3xl self-center">Teras</span>
+        <span class="text-red-500 text-2xl self-center ml-1">Mobil 99</span>
+      </h1>
+    </div>
 
-      <!-- HAMBURGER -->
-      <button id="nav-toggle" class="md:hidden text-black text-3xl focus:outline-none">
-        &#9776;
-      </button>
+    <div class="hidden md:flex space-x-6 items-center font-medium">
 
-      <!-- MENU -->
-      <div id="nav-menu" class="hidden md:flex flex-col mt-2 md:flex-row md:mt-0 md:space-x-6 font-medium w-full md:w-auto">
-        <a href="index.php" class="text-gray-700 hover:text-red-500 py-1 md:py-0">Beranda</a>
-        <a href="galeri.html" class="text-gray-700 hover:text-red-500 py-1 md:py-0">Galeri</a>
-        <a href="tentang.php" class="text-red-500 border-b-2 border-red-500 pb-1">Tentang</a>
-      </div>
+      <a href="index.php" class="text-gray-700 hover:text-red-500">
+        Beranda
+      </a>
+
+      <a href="galeri.php" class="text-gray-700 hover:text-red-500">
+        Galeri
+      </a>
+
+      <a href="tentang.php" class="text-red-500 border-b-2 border-red-500 pb-1">
+        Tentang
+      </a>
+
+      <?php if (!isset($_SESSION['login'])): ?>
+        <a href="login.php" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+          Masuk
+        </a>
+      <?php else: ?>
+        <span class="text-gray-700"><?= $_SESSION['username'] ?></span>
+        <a href="logout.php" class="text-red-500 hover:text-red-700">Logout</a>
+      <?php endif; ?>
 
     </div>
-  </nav>
+
+  </div>
+</nav>
 
   <!-- KONTEN -->
   <section class="max-w-6xl mx-auto px-5 py-10">
@@ -46,7 +64,7 @@
       <div class="mb-8">
         <p class="text-red-500 text-sm mb-2">Tentang</p>
         <h2 class="text-4xl md:text-6xl font-extrabold leading-tight text-slate-900">
-          Showroom <span class="text-red-500">Mobil Kami</span>
+          Showroom <span class="text-red-500">Teras Mobil 99</span>
         </h2>
         <p class="mt-5 max-w-3xl text-slate-600 text-lg leading-relaxed">
           Teras Mobil 99 adalah showroom mobil bekas terpercaya yang menyediakan berbagai pilihan 
@@ -62,7 +80,7 @@
           <p class="mt-2 text-slate-500 text-lg">Pelanggan Puas</p>
         </div>
         <div class="bg-gray-50 rounded-2xl shadow border border-gray-300 p-8 text-center">
-          <h3 class="text-5xl font-extrabold text-red-500">100+</h3>
+          <h3 class="text-5xl font-extrabold text-red-500">50+</h3>
           <p class="mt-2 text-slate-500 text-lg">Mobil Tersedia</p>
         </div>
         <div class="bg-gray-50 rounded-2xl shadow border border-gray-300 p-8 text-center">
@@ -163,7 +181,7 @@
   <h2 class="text-xl font-bold text-white mb-3">Navigasi</h2>
   <ul class="space-y-2 text-sm">
   <li><a href="index.php" class="hover:text-white">Beranda</a></li>
-  <li><a href="formulir.html" class="hover:text-white">Form Pembelian</a></li>
+  <li><a href="galeri.php" class="hover:text-white">Galeri</a></li>
   <li><a href="tentang.php" class="hover:text-white">Tentang Kami</a></li>
   </ul>
   </div>
