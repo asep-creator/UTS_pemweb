@@ -109,7 +109,9 @@ Kenapa Memilih Teras Mobil 99?
 <section id="tentang" class="py-16 bg-gray-100 text-center">
 <h3 class="text-3xl font-bold mb-6">Tentang Kami</h3>
 <p class="max-w-2xl mx-auto">
-Teras Mobil 99 adalah showroom mobil terpercaya.
+Teras Mobil 99 hadir sebagai solusi terpercaya untuk Anda yang mencari mobil bekas berkualitas. 
+Dengan pilihan mobil yang beragam, harga transparan, serta proses pembelian yang mudah, kami siap membantu Anda mendapatkan kendaraan terbaik sesuai kebutuhan. 
+Kepuasan pelanggan adalah prioritas utama kami.
 </p>
 </section>
 
