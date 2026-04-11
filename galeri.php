@@ -52,9 +52,13 @@ class="p-2 border rounded w-1/3">
 
 <select id="tahun" onchange="loadData()" class="p-2 border rounded">
 <option value="">Tahun</option>
+<option value="2021">2022</option>
 <option value="2021">2021</option>
 <option value="2020">2020</option>
 <option value="2019">2019</option>
+<option value="2021">2018</option>
+<option value="2021">2017</option>
+<option value="2021">2016</option>
 </select>
 
 <select id="harga" onchange="loadData()" class="p-2 border rounded">
