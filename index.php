@@ -1,5 +1,5 @@
-<?php 
-include "koneksi.php"; 
+<?php
+include "koneksi.php";
 ?>
 
 <!DOCTYPE html>
@@ -12,45 +12,39 @@ include "koneksi.php";
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
 </head>
 
 <body class="bg-gray-100">
 
 <!-- NAVBAR -->
-<nav class="bg-white shadow">
-<div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+<nav class="bg-white shadow border-b">
+  <div class="max-w-6xl mx-auto flex justify-between items-center py-2 px-5">
 
-<div class="flex items-center space-x-2">
-<img src="assets/logo.png" class="w-14 md:w-20 bg-white p-1 rounded">
-<h1 class="ml-3 flex font-bold">
-<span class="text-black text-xl md:text-3xl">Teras</span>
-<span class="text-red-500 text-lg md:text-2xl ml-1">Mobil 99</span>
-</h1>
-</div>
+    <!-- LOGO -->
+    <div class="flex items-center">
+      <img src="assets/logo.png" alt="logo" class="h-20">
+      <h1 class="ml-3 flex font-bold">
+        <span class="text-black text-3xl self-center">Teras</span>
+        <span class="text-red-500 text-2xl self-center ml-1">Mobil 99</span>
+      </h1>
+    </div>
 
-<div class="hidden md:flex space-x-6 items-center">
+    <!-- MENU -->
+    <div class="hidden md:flex space-x-6 items-center font-medium">
+      <a href="index.php" class="text-red-500 border-b-2 border-red-500 pb-1">Beranda</a>
+      <a href="galeri.php" class="text-gray-700 hover:text-red-500">Galeri</a>
+      <a href="tentang.php" class="text-gray-700 hover:text-red-500">Tentang</a>
 
-<a href="index.php"
-class="text-red-500 border-b-2 border-red-500 pb-1">
-Beranda
-</a>
-
-<a href="galeri.php" class="hover:text-red-500">Galeri</a>
-<a href="tentang.php" class="hover:text-red-500">Tentang</a>
-
-<?php if (!isset($_SESSION['login'])): ?>
-<a href="login.php" class="bg-blue-500 text-white px-4 py-2 rounded">
-Masuk
-</a>
-<?php else: ?>
-<span><?= $_SESSION['username'] ?></span>
-<a href="logout.php" class="text-red-500">Logout</a>
-<?php endif; ?>
-
-</div>
-
-</div>
+      <?php if (!isset($_SESSION['login'])): ?>
+        <a href="login.php" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+          Masuk
+        </a>
+      <?php else: ?>
+        <span class="text-gray-700"><?= $_SESSION['username'] ?></span>
+        <a href="logout.php" class="text-red-500 hover:text-red-700">Logout</a>
+      <?php endif; ?>
+    </div>
+  </div>
 </nav>
 
 <!-- HERO -->
@@ -121,26 +115,44 @@ Teras Mobil 99 adalah showroom mobil terpercaya.
 
 <!-- FOOTER -->
 <footer class="bg-gray-900 text-gray-300 pt-10 pb-6">
+
 <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-3 gap-8">
 
-<div>
-<h2 class="text-white font-bold">Teras Mobil 99</h2>
-<p>Platform jual beli mobil terpercaya</p>
-</div>
+<!-- Tentang -->
+  <div>
+  <h2 class="text-xl font-bold text-white mb-3">Teras Mobil 99</h2>
+  <p class="text-sm leading-relaxed">
+  Teras Mobil 99 adalah platform jual beli mobil terpercaya yang
+  menyediakan berbagai pilihan mobil berkualitas dengan harga terbaik
+  serta proses pembelian yang mudah dan aman.
+  </p>
+  </div>
 
-<div>
-<h2 class="text-white font-bold">Menu</h2>
-<a href="index.php">Beranda</a><br>
-<a href="galeri.php">Galeri</a>
-</div>
+<!-- Navigasi -->
+  <div>
+  <h2 class="text-xl font-bold text-white mb-3">Navigasi</h2>
+  <ul class="space-y-2 text-sm">
+  <li><a href="index.php" class="hover:text-white">Beranda</a></li>
+  <li><a href="galeri.php" class="hover:text-white">Galeri</a></li>
+  <li><a href="tentang.php" class="hover:text-white">Tentang Kami</a></li>
+  </ul>
+  </div>
 
-<div>
-<h2 class="text-white font-bold">Kontak</h2>
-<p>08123456789</p>
-</div>
+<!-- Kontak -->
+  <div>
+  <h2 class="text-xl font-bold text-white mb-3">Kontak Kami</h2>
+  <p class="text-sm">📍 Jl. Raya Mobil No.99, Surabaya</p>
+  <p class="text-sm mt-1">📞 0812-3456-7890</p>
+  <p class="text-sm mt-1">✉ info@terasmobil99.com</p>
+  </div>
 
-</div>
-</footer>
+  </div>
+
+  <div class="border-t border-gray-700 mt-8 pt-4 text-center text-sm">
+  <p>© 2026 Teras Mobil 99. All Rights Reserved.</p>
+  </div>
+
+  </footer>
 
 </body>
 </html>
