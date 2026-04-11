@@ -16,24 +16,53 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
 
 <!-- NAVBAR -->
 <nav class="bg-white shadow">
+
 <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
 
+<!-- Logo -->
 <div class="flex items-center space-x-2">
-<img src="assets/logo.png" class="w-14 md:w-20">
+
+<img src="assets/logo.png" class="w-14 md:w-20 bg-white p-1 rounded">
+
 <h1 class="ml-3 flex font-bold">
-<span class="text-black text-xl md:text-3xl">Teras</span>
-<span class="text-red-500 text-lg md:text-2xl ml-1">Mobil 99</span>
+<span class="text-black text-xl md:text-3xl self-center">Teras</span>
+<span class="text-red-500 text-lg md:text-2xl self-center ml-1">Mobil 99</span>
 </h1>
+
 </div>
 
-<div class="hidden md:flex space-x-6 items-center">
+<!-- Menu Desktop -->
+<div class="hidden md:flex space-x-6 text-gray-700 font-medium items-center">
 
-<a href="index.php">Beranda</a>
-<a href="galeri.php" class="text-red-500 border-b-2 border-red-500 pb-1">Galeri</a>
-<a href="tentang.php">Tentang</a>
+<a href="index.php"
+class="<?= basename($_SERVER['PHP_SELF'])=='index.php' ? 'text-red-500 border-b-2 border-red-500 pb-1' : 'hover:text-red-500' ?>">
+Beranda
+</a>
 
+<a href="galeri.php"
+class="<?= basename($_SERVER['PHP_SELF'])=='galeri.php' ? 'text-red-500 border-b-2 border-red-500 pb-1' : 'hover:text-red-500' ?>">
+Galeri
+</a>
+
+<a href="#tentang"
+class="hover:text-red-500">
+Tentang
+</a>
+
+<!-- DASHBOARD KHUSUS ADMIN -->
+<?php if (isset($_SESSION['role']) && $_SESSION['role']=='admin'): ?>
+<a href="admin/dashboard.php"
+class="<?= strpos($_SERVER['PHP_SELF'], 'dashboard.php') ? 'text-red-500 border-b-2 border-red-500 pb-1' : 'hover:text-red-500' ?>">
+Dashboard
+</a>
+<?php endif; ?>
+
+<!-- LOGIN / LOGOUT -->
 <?php if (!isset($_SESSION['login'])): ?>
-<a href="login.php" class="bg-blue-500 text-white px-4 py-2 rounded">Masuk</a>
+<a href="login.php"
+class="bg-blue-500 text-white px-4 py-2 rounded">
+Masuk
+</a>
 <?php else: ?>
 <span><?= $_SESSION['username'] ?></span>
 <a href="logout.php" class="text-red-500">Logout</a>
@@ -41,24 +70,45 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
 
 </div>
 
-</div>
-</nav>
+<!-- Hamburger Button -->
+<button id="menu-btn" class="md:hidden text-2xl text-gray-700">
+<i class="fa-solid fa-bars"></i>
+</button>
 
+</div>
+
+<!-- Mobile Menu -->
+<div id="mobile-menu"
+class="hidden md:hidden px-6 pb-4 space-y-3 text-gray-700 font-medium">
+
+<a href="index.php">Beranda</a>
+<a href="galeri.php">Galeri</a>
+<a href="#tentang">Tentang</a>
+
+<?php if (isset($_SESSION['role']) && $_SESSION['role']=='admin'): ?>
+<a href="admin/dashboard.php">Dashboard</a>
+<?php endif; ?>
+
+<?php if (!isset($_SESSION['login'])): ?>
+<a href="login.php">Masuk</a>
+<?php else: ?>
+<a href="logout.php">Logout</a>
+<?php endif; ?>
+
+</div>
+
+</nav>
 <!-- FILTER -->
-<div class="max-w-6xl mx-auto px-4 mt-6 flex gap-4">
+<div class="max-w-6xl mx-auto px-4 mt-6 flex gap-4 items-center">
 
 <input type="text" id="search" placeholder="Cari mobil..."
 class="p-2 border rounded w-1/3">
 
 <select id="tahun" onchange="loadData()" class="p-2 border rounded">
 <option value="">Tahun</option>
-<option value="2021">2022</option>
 <option value="2021">2021</option>
 <option value="2020">2020</option>
 <option value="2019">2019</option>
-<option value="2018">2018</option>
-<option value="2017">2017</option>
-<option value="2016">2016</option>
 </select>
 
 <select id="harga" onchange="loadData()" class="p-2 border rounded">
@@ -68,8 +118,14 @@ class="p-2 border rounded w-1/3">
 <option value="300000000">< 300jt</option>
 </select>
 
-</div>
+<?php if (isset($_SESSION['role']) && $_SESSION['role'] == 'admin'): ?>
+<a href="admin/tambah.php"
+class="ml-auto bg-green-500 text-white px-4 py-2 rounded">
++ BARU
+</a>
+<?php endif; ?>
 
+</div>
 <!-- HASIL -->
 <div id="hasil" class="max-w-6xl mx-auto px-4 py-6 grid md:grid-cols-3 gap-6"></div>
 
