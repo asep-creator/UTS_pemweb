@@ -14,7 +14,7 @@ if ($id) {
 if (isset($_POST['submit'])) {
 
     $nama = $_POST['nama'];
-    $nohp = $_POST['nohp'];
+    $nohp = "+62" . $_POST['nohp'];
     $alamat = $_POST['alamat'];
     $mobil_nama = $_POST['mobil'];
     $tipe = $_POST['tipe'];
@@ -23,7 +23,9 @@ if (isset($_POST['submit'])) {
     $harga = $_POST['harga'];
 
     mysqli_query($conn, "INSERT INTO pesanan 
-    VALUES ('','$nama','$mobil_nama','$tipe','$tahun','$pembelian','$harga','status')");
+(nama, nohp, alamat, mobil, tipe, tahun, pembelian, total_harga, status)
+VALUES
+('$nama','$nohp','$alamat','$mobil_nama','$tipe','$tahun','$pembelian','$harga','Pending')");
 
     echo "<script>alert('Pesanan berhasil dikirim');window.location='index.php';</script>";
 }
@@ -89,8 +91,17 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
 <label class="font-semibold">Nama Lengkap</label>
 <input type="text" name="nama" class="w-full border p-2 rounded mb-4" required>
 
-<label class="font-semibold">No HP</label>
-<input type="text" name="nohp" class="w-full border p-2 rounded mb-4" required>
+<label class="font-semibold">No WhatsApp</label>
+
+<div class="flex mb-4">
+    <span class="bg-gray-200 px-3 flex items-center rounded-l">
+        +62
+    </span>
+    <input type="text" name="nohp"
+    placeholder="8123456789"
+    class="w-full border p-2 rounded-r focus:outline-red-400"
+    required>
+</div>
 
 <label class="font-semibold">Alamat</label>
 <textarea name="alamat" class="w-full border p-2 rounded mb-4" required></textarea>
