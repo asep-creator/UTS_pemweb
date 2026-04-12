@@ -4,7 +4,7 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 include "koneksi.php";
 
-// 🔥 AMBIL COOKIE UNTUK AUTO ISI USERNAME
+//  AMBIL COOKIE UNTUK AUTO ISI USERNAME
 $username_cookie = "";
 
 if (isset($_COOKIE['remember']) && $_COOKIE['remember'] == "1") {
@@ -27,7 +27,7 @@ if (isset($_POST['login'])) {
         $_SESSION['username'] = $user['username'];
         $_SESSION['role'] = $user['role'];
 
-        // 🔥 REMEMBER ME
+        //  REMEMBER ME
         if (isset($_POST['remember'])) {
             setcookie("username", $user['username'], time() + (86400 * 7), "/");
             setcookie("role", $user['role'], time() + (86400 * 7), "/");
@@ -77,7 +77,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
 
 <form method="POST">
 
-<!-- 🔥 USERNAME AUTO FILL -->
+<!--  USERNAME AUTO FILL -->
 <input type="text" name="username"
 value="<?= $username_cookie ?>"
 placeholder="Username"
@@ -87,7 +87,7 @@ class="w-full p-3 border rounded-lg mb-3 focus:outline-red-400" required>
 placeholder="Password"
 class="w-full p-3 border rounded-lg mb-2 focus:outline-red-400" required>
 
-<!-- 🔥 REMEMBER ME -->
+<!--  REMEMBER ME -->
 <div class="flex items-center justify-between mb-4">
     <label class="flex items-center text-sm text-gray-600">
         <input type="checkbox" name="remember" class="mr-2">
