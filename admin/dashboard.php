@@ -109,7 +109,12 @@ while ($p = mysqli_fetch_assoc($data)) {
 
 <tr class="border-t hover:bg-gray-50">
 
-<td class="p-3"><?= $p['nama'] ?></td>
+<td class="p-3">
+<a href="detail_pesanan.php?id=<?= $p['id'] ?>" 
+class="text-blue-500 hover:underline font-semibold">
+<?= $p['nama'] ?>
+</a>
+</td>
 <td><?= $p['mobil'] ?></td>
 <td><?= $p['tahun'] ?></td>
 <td><?= $p['pembelian'] ?></td>
